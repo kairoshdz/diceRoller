@@ -1,0 +1,51 @@
+body {
+    font-family: "Odibee Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #0e6401;
+    font-size: 30px;
+    color:aliceblue;
+    margin: 0;
+    padding: 25px;
+
+    h1{
+        color: hsl(0, 0%, 100%);
+        text-shadow: 8px 3px 14px #ffdd00;
+    }
+}
+
+button, input {
+    font-family: "Odibee Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    margin: 4px;
+}
+
+#hitButton {
+    background-color: #11b614;
+    color: #0e6401;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+
+#standButton {
+    background-color: #b61111;
+    color: #640101;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#resetButton {
+    background-color: #b6b311;
+    color: #645f01;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+}

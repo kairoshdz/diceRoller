@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Killjack</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="app.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+</head>
+
+<!--onload requirement--> 
+<!--implement die face text ⚀, ⚁, ⚂, ⚃, ⚄, ⚅, animations if enough time is left-->
+<body onload="initDeal()">
+
+  <h1>Killjack ⚅</h1>
+
+  <p>
+    Instructions: Get as close to 21 as possible without going over. Click "Hit"/Enter to roll
+    another die, or "Stand"/Backspace to end your turn. The dealer will play automatically. Make
+    sure to reset the game by using the spacebar.
+  </p>
+
+  <!-- Player Dice Section -->
+  <fieldset>
+    <legend>Player</legend>
+    <label for="playerDice">Dice:</label>
+    <input type="text" id="playerDice" readonly style="text-align:right;">
+    <br>
+    <label for="playerScore">Score:</label>
+    <input type="text" id="playerScore" readonly style="text-align:right;">
+    <br>
+    <!--Sometimes autofocus isn't the best, I want the script
+    to work when enter is clicked no matter what. Fixed this in JS-->
+    <button id="hitButton" onclick="playerHit()" autofocus>Hit</button>
+    
+    <button id ="standButton" onclick="playerStand()">Stand</button>
+  </fieldset>
+
+  <!-- Dealer Dice Section -->
+  <fieldset>
+    <legend>Dealer</legend>
+    <label for="dealerDice">Dice:</label>
+    <input type="text" id="dealerDice" readonly style="text-align:right;">
+    <br>
+    <label for="dealerScore">Score:</label>
+    <input type="text" id="dealerScore" readonly style="text-align:right;">
+  </fieldset>
+
+  <!-- Reset Button -->
+  <button id="resetButton" onclick="resetGame()">Reset Game</button>
+
+</body>
+</html>
