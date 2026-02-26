@@ -13,7 +13,7 @@ function newDice() {
 }
 
 async function rollDie() {
-    const response = await fetch("https://my-dice-roller-api-gqe7bvg8czb4c7b7.canadacentral-01.azurewebsites.net/roll")
+    const response = await fetch("https://my-dice-roller-api-gqe7bvg8czb4c7b7.canadacentral-01.azurewebsites.net/api/roll")
     const data = await response.json();
     return data.value;
 }
