@@ -1,6 +1,8 @@
 let playerDice = [];
 let dealerDice = [];
 
+window.onload = initDeal;
+
 // adds new dice to the displayed array
 function newDice() {
     document.getElementById("playerDice").value = "Player Dice: " + playerDice.join(", ");
@@ -10,13 +12,15 @@ function newDice() {
     document.getElementById("dealerScore").value = "Dealer Score: " + calculateScore(dealerDice);
 }
 
-function rollDie() {
-    return Math.floor(Math.random() * 6) + 1;
+async function rollDie() {
+    const response = await fetch("https://my-dice-roller-api-gqe7bvg8czb4c7b7.canadacentral-01.azurewebsites.net/roll")
+    const data = await response.json();
+    return data.value;
 }
 
-function initDeal() {
-    playerDice = [rollDie(), rollDie(), rollDie()];
-    dealerDice = [rollDie(), rollDie()];
+async function initDeal() {
+    playerDice = [await rollDie(), await rollDie(), await rollDie()];
+    dealerDice = [await rollDie(), await rollDie()];
     
     newDice();
 }   
@@ -25,20 +29,20 @@ function calculateScore(dice) {
     return dice.reduce((total, die) => total + die, 0);
 }
 
-function playerHit() {
-    playerDice.push(rollDie());
+async function playerHit() {
+    playerDice.push(await rollDie());
     newDice();
     if (calculateScore(playerDice) > 21) {
         alert("Bust! Dealer wins.");
     }
 }
 
-function playerStand() {
+async function playerStand() {
     let playerScore = calculateScore(playerDice);
     // most casinos have the dealer hold on a soft 17. Only 6 possible "cards" with equal 
     // probability, so the dealer stands on 18 or higher no matter what.
     while (calculateScore(dealerDice) < 18) {
-        dealerDice.push(rollDie());
+        dealerDice.push(await rollDie());
         newDice();
     }
     determineWinner();
